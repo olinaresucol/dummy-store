@@ -1,10 +1,21 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import Home from './pages/home/Home.jsx'
+import {
+    onCaughtErrorProd,
+    onRecoverableErrorProd,
+    onUncaughtErrorProd,
+} from "./lib/reportCaughtError.js"
 import './index.css'
-import App from './App.jsx'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+const container = document.getElementById("root")
+const root = createRoot(container, {
+    onCaughtError: onCaughtErrorProd,
+    onRecoverableError: onRecoverableErrorProd,
+    onUncaughtError: onUncaughtErrorProd,
+})
+root.render(
+    <StrictMode>
+        <Home />
+    </StrictMode>,
 )
