@@ -1,7 +1,8 @@
 import { ShoppingBasket } from "lucide-react"
 import "./Header.css"
 
-export const Header = () => {
+export const Header = (props) => {
+    const { amount } = props
     return (
         <div className="header">
             <p className="logo">
@@ -9,7 +10,7 @@ export const Header = () => {
             </p>
             <button className="cart-btn">
                 <ShoppingBasket size={18} />
-                <p className="cart-btn-count">3</p>
+                <p className="cart-btn-count">{amount}</p>
             </button>
         </div>
     )
