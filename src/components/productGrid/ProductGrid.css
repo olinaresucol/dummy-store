@@ -1,0 +1,31 @@
+.product-grid-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 16px;
+    box-sizing: border-box;
+}
+
+.product-grid-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.product-grid {
+    display: grid;
+    /* Responsivo automático: columnas con un ancho mínimo de 250px */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+    width: 100%;
+}
+
+/* Estado cuando no hay productos disponibles */
+.product-grid-empty {
+    text-align: center;
+    padding: 48px 16px;
+    color: #6b7280;
+    font-size: 1.125rem;
+}
