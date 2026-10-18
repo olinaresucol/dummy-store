@@ -1,17 +1,30 @@
-import { ShoppingBasket } from "lucide-react"
+import { ShoppingBasket, Search } from "lucide-react"
 import "./Header.css"
 
-export const Header = (props) => {
-    const { amount } = props
+export const Header = ({ amount, searchQuery, onSearchChange }) => {
     return (
-        <div className="header">
+        <header className="header">
+            {/* Logo */}
             <p className="logo">
                 Dummy <strong>Shop</strong>
             </p>
-            <button className="cart-btn">
+
+            {/* Barra de Búsqueda */}
+            <div className="search-bar">
+                <Search size={18} className="search-icon" />
+                <input
+                    type="text"
+                    placeholder="Search products..."
+                    value={searchQuery || ""}
+                    onChange={(e) => onSearchChange && onSearchChange(e.target.value)}
+                />
+            </div>
+
+            {/* Botón del Carrito */}
+            <button className="cart-btn" aria-label="Carrito de compras">
                 <ShoppingBasket size={18} />
                 <p className="cart-btn-count">{amount}</p>
             </button>
-        </div>
-    )
-}
+        </header>
+    );
+};
