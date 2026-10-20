@@ -1,6 +1,6 @@
 import "./ProductCard.css"
 
-export const ProductCard = ({ producto, variant = "grid", onAddToCart }) => {
+export const ProductCard = ({ producto, variant = "grid", onAddToCart, amount, onAmountChange }) => {
     if (!producto) return null;
     const { title, price, thumbnail, category } = producto;
 
@@ -25,7 +25,7 @@ export const ProductCard = ({ producto, variant = "grid", onAddToCart }) => {
                     <span className="product-card-price">${price}</span>
 
                     {variant === "grid" && (
-                        <button className="product-card-btn" onClick={() => onAddToCart?.(producto)}>
+                        <button className="product-card-btn" onClick={() => { onAmountChange(amount + 1); onAddToCart?.(producto) }}>
                             Add to cart
                         </button>
                     )}
@@ -33,7 +33,7 @@ export const ProductCard = ({ producto, variant = "grid", onAddToCart }) => {
                     {variant === "compact" && (
                         <button
                             className="product-card-btn product-card-btn--icon"
-                            onClick={() => onAddToCart?.(producto)}
+                            onClick={() => { onAmountChange(amount + 1); onAddToCart?.(producto) }}
                             aria-label="Add to cart"
                         >
                             +

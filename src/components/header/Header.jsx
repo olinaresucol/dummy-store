@@ -1,4 +1,5 @@
-import { ShoppingBasket, Search } from "lucide-react"
+import SearchBar from "../searchBar/SearchBar";
+import { ShoppingBasket } from "lucide-react"
 import "./Header.css"
 
 export const Header = ({ amount, searchQuery, onSearchChange }) => {
@@ -10,15 +11,7 @@ export const Header = ({ amount, searchQuery, onSearchChange }) => {
             </p>
 
             {/* Barra de Búsqueda */}
-            <div className="search-bar">
-                <Search size={18} className="search-icon" />
-                <input
-                    type="text"
-                    placeholder="Search products..."
-                    value={searchQuery || ""}
-                    onChange={(e) => onSearchChange && onSearchChange(e.target.value)}
-                />
-            </div>
+            <SearchBar searchQuery={searchQuery} onSearchChange={onSearchChange} />
 
             {/* Botón del Carrito */}
             <button className="cart-btn" aria-label="Carrito de compras">

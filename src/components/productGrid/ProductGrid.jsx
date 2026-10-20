@@ -5,7 +5,7 @@ const addToCart = (producto) => {
     console.log("Producto \"" + producto.title + "\" agregado al carrito");
 }
 
-export const ProductGrid = ({ productos = [] }) => {
+export const ProductGrid = ({ productos = [], amount, onAmountChange }) => {
     if (!productos || productos.length === 0) {
         return (
             <div className="product-grid-container">
@@ -23,6 +23,8 @@ export const ProductGrid = ({ productos = [] }) => {
                         key={producto.id}
                         producto={producto}
                         onAddToCart={addToCart}
+                        amount={amount}
+                        onAmountChange={onAmountChange}
                     />
                 ))}
             </div>
