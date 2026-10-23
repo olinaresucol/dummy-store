@@ -9,7 +9,7 @@ export const ProductGrid = ({ productos = [], amount, onAmountChange }) => {
     if (!productos || productos.length === 0) {
         return (
             <div className="product-grid-container">
-                <p className="product-grid-empty">No se encontraron productos.</p>
+                <p className="product-grid-empty">No se encontraron productos</p>
             </div>
         );
     }
