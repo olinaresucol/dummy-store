@@ -1,8 +1,12 @@
 import SearchBar from "../searchBar/SearchBar";
 import { ShoppingBasket } from "lucide-react"
 import "./Header.css"
+import { useEffect } from "react";
 
-export const Header = ({ amount, searchQuery, onSearchChange }) => {
+export const Header = ({ amount }) => {
+    useEffect(() => {
+        console.log('Header montado')
+    }, [])
     return (
         <header className="header">
             {/* Logo */}
@@ -11,7 +15,7 @@ export const Header = ({ amount, searchQuery, onSearchChange }) => {
             </p>
 
             {/* Barra de Búsqueda */}
-            <SearchBar searchQuery={searchQuery} onSearchChange={onSearchChange} />
+            <SearchBar />
 
             {/* Botón del Carrito */}
             <button className="cart-btn" aria-label="Carrito de compras">

@@ -1,0 +1,99 @@
+/* --- Estilos base del botón --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    border-radius: 999px; /* Forma redonda en píldora según el diseño */
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+    user-select: none;
+}
+
+/* --- VARIANTE PRIMARY --- */
+.btn--primary {
+    background-color: var(--primary, #c2410c);
+    color: #ffffff;
+}
+
+.btn--primary:hover:not(:disabled) {
+    background-color: var(--primary-hover, #9a3412);
+}
+
+.btn--primary:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+/* --- TAMAÑOS (size) --- */
+.btn--sm {
+    padding: 6px 14px;
+    font-size: 12px;
+    min-height: 32px;
+}
+
+.btn--md {
+    padding: 10px 22px;
+    font-size: 14px;
+    min-height: 42px;
+}
+
+.btn--lg {
+    padding: 14px 28px;
+    font-size: 16px;
+    min-height: 50px;
+}
+
+/* --- ANCHO COMPLETO (fullWidth) --- */
+.btn--fullwidth {
+    width: 100%;
+    display: flex;
+}
+
+/* --- ESTADO DESHABILITADO (disabled) --- */
+.btn:disabled {
+    background-color: #E5E5E0;
+    color: #A8A29E;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --- ESTADO CARGANDO (loading) --- */
+.btn--loading {
+    cursor: wait;
+    opacity: 0.9;
+}
+
+/* Spinner animado */
+.btn-spinner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner-icon {
+    width: 1.1em;
+    height: 1.1em;
+    animation: btn-spin 0.75s linear infinite;
+}
+
+.spinner-track {
+    opacity: 0.25;
+}
+
+.spinner-head {
+    opacity: 0.95;
+}
+
+@keyframes btn-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

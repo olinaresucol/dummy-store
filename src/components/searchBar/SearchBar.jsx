@@ -1,7 +1,10 @@
 import { Search, X } from "lucide-react"
 import "./SearchBar.css"
+import { useContext } from "react"
+import { SearchContext } from "../../context/searchContext"
 
-function SearchBar({ searchQuery, onSearchChange }) {
+function SearchBar() {
+    const { searchQuery, onSearchChange } = useContext(SearchContext)
     return (
         <div className="search-bar">
             <Search size={18} className="search-icon" />

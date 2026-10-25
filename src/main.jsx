@@ -7,6 +7,7 @@ import {
     onUncaughtErrorProd,
 } from "./lib/reportCaughtError.js"
 import './index.css'
+import { SearchContextProvider } from './components/context/SearchContextProvider.jsx'
 
 const container = document.getElementById("root")
 const root = createRoot(container, {
@@ -16,6 +17,8 @@ const root = createRoot(container, {
 })
 root.render(
     <StrictMode>
-        <Home />
+        <SearchContextProvider>
+            <Home />
+        </SearchContextProvider>
     </StrictMode>,
 )

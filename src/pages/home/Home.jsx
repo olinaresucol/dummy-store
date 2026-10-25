@@ -1,49 +1,65 @@
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Header } from "../../components/header/Header"
 import { Footer } from "../../components/footer/Footer"
 import { Section } from "../../components/section/Section"
 import { ProductGrid } from "../../components/productGrid/ProductGrid"
-import { data } from "../../utils/data.js"
+import Button from "../../components/button/Button"
+import { SearchContext } from "../../context/searchContext"
 
 const Home = () => {
-    const { products } = data
+    const [products, setProducts] = useState([])
     const [amount, setAmount] = useState(0)
-    const [searchQuery, setSearchQuery] = useState("")
+    const { searchQuery } = useContext(SearchContext)
+
+    const getData = () => {
+        let query = ''
+        searchQuery !== '' ? query = 'https://dummyjson.com/products/search?q=' + searchQuery : query = 'https://dummyjson.com/products'
+        fetch(query)
+            .then(res => res.json())
+            .then(json => {
+                document.title = `${json.products.length} productos | Dummy Shop`
+                setProducts(json.products)
+            });
+    }
+
+    useEffect(() => {
+        getData()
+    }, [searchQuery])
 
     // Para pruebas de renderizado condicional
     const [isLoading, setLoading] = useState(true)
-    setTimeout(()=>{
+    setTimeout(() => {
         setLoading(false)
-    },3000)
+    }, 3000)
 
     const filteredProducts = products.filter(
         (producto) => producto.title.toLowerCase().includes(searchQuery.toLowerCase())
     )
 
-    {/* Renderizado condicional mediante: if temprano (parte 1 de 2) */}
-    if(isLoading) {
-        return <p style={{textAlign:"center"}}>Loading ...</p>
+    {/* Renderizado condicional mediante: if temprano (parte 1 de 2) */ }
+    if (isLoading) {
+        return <p style={{ textAlign: "center" }}>Loading ...</p>
     }
 
     return (
         <>
             <Header
                 amount={amount}
-                searchQuery={searchQuery}
-                onSearchChange={setSearchQuery}
             />
 
             <main>
                 <Section>
+                    {isLoading && <Button variant="primary" size="sm">Botón</Button>}
+
                     {/* Renderizado condicional mediante: if temprano (parte 2 de 2) */}
-                    <ProductGrid productos={filteredProducts} amount={amount} onAmountChange={setAmount} />
+                    {/* <ProductGrid productos={products} amount={amount} onAmountChange={setAmount} /> */}
 
                     {/* Renderizado condicional mediante: Ternario */}
                     {/* {isLoading ? <p style={{textAlign:"center"}}>Loading ...</p> : <ProductGrid productos={filteredProducts} amount={amount} onAmountChange={setAmount} />} */}
 
                     {/* Renderizado condicional mediante: && */}
-                    {/* {isLoading && <p style={{textAlign:"center"}}>Loading ...</p>} */}
-                    {/* <ProductGrid productos={filteredProducts} amount={amount} onAmountChange={setAmount} /> */}
+                    {isLoading && <p style={{ textAlign: "center" }}>Loading ...</p>}
+                    <ProductGrid productos={products} amount={amount} onAmountChange={setAmount} />
                 </Section>
             </main>
 
