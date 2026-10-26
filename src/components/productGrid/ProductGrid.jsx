@@ -1,11 +1,14 @@
 import "./ProductGrid.css"
 import { ProductCard } from "../../components/productCard/ProductCard.jsx"
+import { useStore } from "../../lib/store.js";
 
-const addToCart = (producto) => {
-    console.log("Producto \"" + producto.title + "\" agregado al carrito");
-}
+// const addToCart = (producto) => {
+//     console.log("Producto \"" + producto.title + "\" agregado al carrito");
+// }
 
 export const ProductGrid = ({ productos = [], amount, onAmountChange }) => {
+    const addToCart = useStore((state) => state.addToCart)
+
     if (!productos || productos.length === 0) {
         return (
             <div className="product-grid-container">

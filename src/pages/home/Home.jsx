@@ -3,7 +3,7 @@ import { Header } from "../../components/header/Header"
 import { Footer } from "../../components/footer/Footer"
 import { Section } from "../../components/section/Section"
 import { ProductGrid } from "../../components/productGrid/ProductGrid"
-import Button from "../../components/button/Button"
+// import Button from "../../components/button/Button"
 import { SearchContext } from "../../context/searchContext"
 
 const Home = () => {
@@ -27,29 +27,27 @@ const Home = () => {
     }, [searchQuery])
 
     // Para pruebas de renderizado condicional
-    const [isLoading, setLoading] = useState(true)
-    setTimeout(() => {
-        setLoading(false)
-    }, 3000)
+    // const [isLoading, setLoading] = useState(true)
+    // setTimeout(() => {
+    //     setLoading(false)
+    // }, 3000)
 
     const filteredProducts = products.filter(
         (producto) => producto.title.toLowerCase().includes(searchQuery.toLowerCase())
     )
 
     {/* Renderizado condicional mediante: if temprano (parte 1 de 2) */ }
-    if (isLoading) {
-        return <p style={{ textAlign: "center" }}>Loading ...</p>
-    }
+    // if (isLoading) {
+    //     return <p style={{ textAlign: "center" }}>Loading ...</p>
+    // }
 
     return (
         <>
-            <Header
-                amount={amount}
-            />
+            <Header />
 
             <main>
                 <Section>
-                    {isLoading && <Button variant="primary" size="sm">Botón</Button>}
+                    {/* {isLoading && <Button variant="primary" size="sm">Botón</Button>} */}
 
                     {/* Renderizado condicional mediante: if temprano (parte 2 de 2) */}
                     {/* <ProductGrid productos={products} amount={amount} onAmountChange={setAmount} /> */}
@@ -58,7 +56,8 @@ const Home = () => {
                     {/* {isLoading ? <p style={{textAlign:"center"}}>Loading ...</p> : <ProductGrid productos={filteredProducts} amount={amount} onAmountChange={setAmount} />} */}
 
                     {/* Renderizado condicional mediante: && */}
-                    {isLoading && <p style={{ textAlign: "center" }}>Loading ...</p>}
+                    {/* {isLoading && <p style={{ textAlign: "center" }}>Loading ...</p>} */}
+                    
                     <ProductGrid productos={products} amount={amount} onAmountChange={setAmount} />
                 </Section>
             </main>
