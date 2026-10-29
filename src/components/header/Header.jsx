@@ -1,7 +1,7 @@
 import SearchBar from "../searchBar/SearchBar";
-import "./Header.css"
-import { useEffect } from "react";
+import "./Header.css";
 import { Cart } from "../cart/Cart.jsx";
+import { Link, NavLink } from "react-router";
 
 export const Header = () => {
     // useEffect(() => {
@@ -11,9 +11,11 @@ export const Header = () => {
     return (
         <header className="header">
             {/* Logo */}
-            <p className="logo">
-                Dummy <strong>Shop</strong>
-            </p>
+            <Link to="/" className="anchor-to-home">
+                <p className="logo">
+                    Dummy <strong>Shop</strong>
+                </p>
+            </Link>
 
             {/* Barra de Búsqueda */}
             <SearchBar />

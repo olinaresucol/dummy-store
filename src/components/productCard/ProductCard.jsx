@@ -1,6 +1,13 @@
-import "./ProductCard.css"
+import "./ProductCard.css";
+import { Link } from "react-router";
 
-export const ProductCard = ({ producto, variant = "grid", onAddToCart, amount, onAmountChange }) => {
+export const ProductCard = ({
+    producto,
+    variant = "grid",
+    onAddToCart,
+    amount,
+    onAmountChange,
+}) => {
     if (!producto) return null;
     const { title, price, thumbnail, category } = producto;
 
@@ -8,7 +15,13 @@ export const ProductCard = ({ producto, variant = "grid", onAddToCart, amount, o
         <article className={`product-card product-card--${variant}`}>
             {/* Contenedor de la imagen del producto */}
             <div className="product-card-thumb">
-                <img src={thumbnail} alt={title} />
+                <Link
+                    className="product-card-thumb-link"
+                    to={`/product/${producto.id}`}
+                    aria-label={`Ver ${title}`}
+                >
+                    <img src={thumbnail} alt={title} />
+                </Link>
             </div>
 
             {/* Cuerpo de la tarjeta */}
@@ -18,14 +31,22 @@ export const ProductCard = ({ producto, variant = "grid", onAddToCart, amount, o
                     <span className="product-card-category">{category}</span>
                 )}
 
-                <h3 className="product-card-title">{title}</h3>
+                <h3 className="product-card-title">
+                    <Link to={`/product/${producto.id}`}>{title}</Link>
+                </h3>
 
                 {/* Pie de la tarjeta: Precio y Botón según la variante */}
                 <div className="product-card-footer">
                     <span className="product-card-price">${price}</span>
 
                     {variant === "grid" && (
-                        <button className="product-card-btn" onClick={() => { onAmountChange(amount + 1); onAddToCart?.(producto) }}>
+                        <button
+                            className="product-card-btn"
+                            onClick={() => {
+                                onAmountChange(amount + 1);
+                                onAddToCart?.(producto);
+                            }}
+                        >
                             Add to cart
                         </button>
                     )}
@@ -33,7 +54,10 @@ export const ProductCard = ({ producto, variant = "grid", onAddToCart, amount, o
                     {variant === "compact" && (
                         <button
                             className="product-card-btn product-card-btn--icon"
-                            onClick={() => { onAmountChange(amount + 1); onAddToCart?.(producto) }}
+                            onClick={() => {
+                                onAmountChange(amount + 1);
+                                onAddToCart?.(producto);
+                            }}
                             aria-label="Add to cart"
                         >
                             +
@@ -42,11 +66,8 @@ export const ProductCard = ({ producto, variant = "grid", onAddToCart, amount, o
                 </div>
             </div>
         </article>
-
-
-    )
-}
-
+    );
+};
 
 // Componente para el estado de carga (Skeleton)
 export const ProductCardSkeleton = () => {

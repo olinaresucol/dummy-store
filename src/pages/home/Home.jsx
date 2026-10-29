@@ -1,30 +1,30 @@
-import { useContext, useEffect, useState } from "react"
-import { Header } from "../../components/header/Header"
-import { Footer } from "../../components/footer/Footer"
-import { Section } from "../../components/section/Section"
-import { ProductGrid } from "../../components/productGrid/ProductGrid"
-// import Button from "../../components/button/Button"
-import { SearchContext } from "../../context/searchContext"
+import { useContext, useEffect, useState } from "react";
+import { Footer } from "../../components/footer/Footer";
+import { Section } from "../../components/section/Section";
+import { ProductGrid } from "../../components/productGrid/ProductGrid";
+import { SearchContext } from "../../context/searchContext";
 
-const Home = () => {
-    const [products, setProducts] = useState([])
-    const [amount, setAmount] = useState(0)
-    const { searchQuery } = useContext(SearchContext)
+export const Home = () => {
+    const [products, setProducts] = useState([]);
+    const [amount, setAmount] = useState(0);
+    const { searchQuery } = useContext(SearchContext);
 
     const getData = () => {
-        let query = ''
-        searchQuery !== '' ? query = 'https://dummyjson.com/products/search?q=' + searchQuery : query = 'https://dummyjson.com/products'
+        let query = "";
+        searchQuery !== ""
+            ? (query = "https://dummyjson.com/products/search?q=" + searchQuery)
+            : (query = "https://dummyjson.com/products");
         fetch(query)
-            .then(res => res.json())
-            .then(json => {
-                document.title = `${json.products.length} productos | Dummy Shop`
-                setProducts(json.products)
+            .then((res) => res.json())
+            .then((json) => {
+                document.title = `${json.products.length} productos | Dummy Shop`;
+                setProducts(json.products);
             });
-    }
+    };
 
     useEffect(() => {
-        getData()
-    }, [searchQuery])
+        getData();
+    }, [searchQuery]);
 
     // Para pruebas de renderizado condicional
     // const [isLoading, setLoading] = useState(true)
@@ -32,19 +32,19 @@ const Home = () => {
     //     setLoading(false)
     // }, 3000)
 
-    const filteredProducts = products.filter(
-        (producto) => producto.title.toLowerCase().includes(searchQuery.toLowerCase())
-    )
+    const filteredProducts = products.filter((producto) =>
+        producto.title.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
 
-    {/* Renderizado condicional mediante: if temprano (parte 1 de 2) */ }
+    {
+        /* Renderizado condicional mediante: if temprano (parte 1 de 2) */
+    }
     // if (isLoading) {
     //     return <p style={{ textAlign: "center" }}>Loading ...</p>
     // }
 
     return (
         <>
-            <Header />
-
             <main>
                 <Section>
                     {/* {isLoading && <Button variant="primary" size="sm">Botón</Button>} */}
@@ -57,14 +57,14 @@ const Home = () => {
 
                     {/* Renderizado condicional mediante: && */}
                     {/* {isLoading && <p style={{ textAlign: "center" }}>Loading ...</p>} */}
-                    
-                    <ProductGrid productos={products} amount={amount} onAmountChange={setAmount} />
+
+                    <ProductGrid
+                        productos={products}
+                        amount={amount}
+                        onAmountChange={setAmount}
+                    />
                 </Section>
             </main>
-
-            <Footer />
         </>
-    )
-}
-
-export default Home
+    );
+};

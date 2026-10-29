@@ -4,18 +4,18 @@ import { persist } from 'zustand/middleware'
 export const useStore = create()(
     persist((set) => ({
         cart: [],
-        addToCart: (newItem) => set((state) => {
+        addToCart: (newItem, quantity = 1) => set((state) => {
             const itemAlreadyInCart = state.cart.find(
                 (product) => product.id === newItem.id,
             )
 
             if (!itemAlreadyInCart) {
-                return { cart: [...state.cart, { ...newItem, quantity: 1 }] }
+                return { cart: [...state.cart, { ...newItem, quantity }] }
             } else {
                 return {
                     cart: state.cart.map((product) => {
                         if (product.id === newItem.id) {
-                            return { ...product, quantity: product.quantity + 1 }
+                            return { ...product, quantity: product.quantity + quantity }
                         }
                         return product
                     })

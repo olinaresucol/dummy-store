@@ -1,0 +1,132 @@
+.not-found {
+    min-height: calc(100vh - 140px);
+    display: grid;
+    place-items: center;
+    padding: 48px 24px;
+    background:
+        radial-gradient(ellipse at 50% 42%, rgba(194, 65, 12, 0.07), transparent 38%),
+        #faf9f6;
+    text-align: center;
+}
+
+.not-found__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 520px;
+}
+
+.not-found__illustration {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 184px;
+    height: 184px;
+    margin-bottom: 28px;
+    border: 1px solid rgba(194, 65, 12, 0.16);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--primary);
+}
+
+.not-found__illustration::before,
+.not-found__illustration::after {
+    position: absolute;
+    content: "";
+    border: 1px dashed rgba(194, 65, 12, 0.2);
+    border-radius: 50%;
+}
+
+.not-found__illustration::before {
+    inset: 12px;
+}
+
+.not-found__illustration::after {
+    inset: -10px;
+    border-style: solid;
+    border-color: rgba(194, 65, 12, 0.08);
+}
+
+.not-found__illustration span {
+    margin-top: 40px;
+    font-size: 46px;
+    font-weight: 700;
+    letter-spacing: -0.08em;
+    line-height: 1;
+}
+
+.not-found__compass {
+    position: absolute;
+    top: 30px;
+}
+
+.not-found__eyebrow {
+    margin-bottom: 10px;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.not-found h1 {
+    color: #292524;
+    font-size: clamp(30px, 5vw, 42px);
+    letter-spacing: -0.05em;
+    line-height: 1.12;
+}
+
+.not-found__description {
+    max-width: 420px;
+    margin-top: 14px;
+    color: #78716c;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.not-found__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 28px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.not-found__link:hover {
+    background: #9a3412;
+}
+
+.not-found__link:active {
+    transform: scale(0.98);
+}
+
+.not-found__link:focus-visible {
+    outline: 3px solid rgba(194, 65, 12, 0.35);
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    .not-found {
+        min-height: calc(100vh - 128px);
+        padding: 36px 22px;
+    }
+
+    .not-found__illustration {
+        width: 160px;
+        height: 160px;
+    }
+
+    .not-found__illustration span {
+        font-size: 40px;
+    }
+
+    .not-found__description {
+        font-size: 15px;
+    }
+}

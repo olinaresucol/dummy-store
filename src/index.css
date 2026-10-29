@@ -8,3 +8,8 @@
     box-sizing: border-box;
     font-family: 'Space Grotesk', sans-serif;
 }
+
+a.anchor-to-home {
+    text-decoration: none;
+    color: inherit;
+}
