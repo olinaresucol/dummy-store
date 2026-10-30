@@ -1,15 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Space Grotesk", sans-serif;
+}
+
 :root {
-    --primary: #C2410C
+    --primary: #C2410C;
 }
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Space Grotesk', sans-serif;
-}
-
-a.anchor-to-home {
-    text-decoration: none;
-    color: inherit;
+@layer base {
+    body {
+        @apply font-sans;
+    }
 }

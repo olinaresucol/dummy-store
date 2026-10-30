@@ -1,7 +1,6 @@
 import SearchBar from "../searchBar/SearchBar";
-import "./Header.css";
 import { Cart } from "../cart/Cart.jsx";
-import { Link, NavLink } from "react-router";
+import { Link } from "react-router";
 
 export const Header = () => {
     // useEffect(() => {
@@ -9,11 +8,11 @@ export const Header = () => {
     // }, [])
 
     return (
-        <header className="header">
+        <header className="flex flex-wrap items-center justify-between gap-4 p-4 md:flex-nowrap md:p-[22px]">
             {/* Logo */}
-            <Link to="/" className="anchor-to-home">
-                <p className="logo">
-                    Dummy <strong>Shop</strong>
+            <Link to="/" className="text-inherit no-underline">
+                <p className="whitespace-nowrap">
+                    Dummy <strong className="text-[var(--primary)]">Shop</strong>
                 </p>
             </Link>
 

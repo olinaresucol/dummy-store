@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { Footer } from "../../components/footer/Footer";
 import { Section } from "../../components/section/Section";
 import { ProductGrid } from "../../components/productGrid/ProductGrid";
 import { SearchContext } from "../../context/searchContext";
@@ -25,6 +24,18 @@ export const Home = () => {
     useEffect(() => {
         getData();
     }, [searchQuery]);
+
+    // const computation = useMemo(
+    //     () =>
+    //         Array(1000)
+    //             .fill(null)
+    //             .map((item, index) => {
+    //                 console.log("Recalculando...");
+    //                 return index * 2;
+    //             }),
+    //     [],
+    // );
+    // console.log('testing', computation);
 
     // Para pruebas de renderizado condicional
     // const [isLoading, setLoading] = useState(true)

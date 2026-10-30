@@ -11,15 +11,15 @@ export const Cart = () => {
     );
 
     return (
-        <div>
+        <div className="flex shrink-0 gap-2">
             <Link to="/checkout">
-                <button className="cart-btn" aria-label="Carrito de compras">
+                <button className="relative h-11 w-11 shrink-0 cursor-pointer rounded-full border-0 bg-[#f6f5f2] p-2" aria-label="Carrito de compras">
                     <ShoppingBasket size={18} />
-                    <p className="cart-btn-count">{cartAmount}</p>
+                    <p className="absolute top-px right-0 flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[var(--primary)] text-[10px] font-bold text-white">{cartAmount}</p>
                 </button>
             </Link>
             <button
-                className="cart-btn"
+                className="relative h-11 w-11 shrink-0 cursor-pointer rounded-full border-0 bg-[#f6f5f2] p-2"
                 aria-label="Carrito de compras"
                 onClick={removeAllFromCart}
             >
